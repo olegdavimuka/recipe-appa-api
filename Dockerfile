@@ -1,5 +1,5 @@
 FROM python:3.9-alpine
-MAINTAINER Oleh Davymuka
+LABEL Oleh Davymuka
 
 ENV PYTHONUNBUFFERED 1
 
