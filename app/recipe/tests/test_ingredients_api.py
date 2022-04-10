@@ -19,11 +19,11 @@ class PublicIngredientsApiTest(TestCase):
     def setUp(self):
         self.client = APIClient()
 
-    # def test_login_required(self):
-    #     """Test that login is required to access the endpoint"""
-    #     res = self.client.get(INGREDIENTS_URL)
-    #
-    #     self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
+    def test_login_required(self):
+        """Test that login is required to access the endpoint"""
+        res = self.client.get(INGREDIENTS_URL)
+
+        self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
 
 
 class PrivateIngredientsApiTests(TestCase):
@@ -51,7 +51,8 @@ class PrivateIngredientsApiTests(TestCase):
         self.assertEqual(res.data, serializer.data)
 
     def test_ingredients_limited_to_user(self):
-        """Test that only ingredients for the authenticated user are returned"""
+        """Test that only ingredients
+        for the authenticated user are returned"""
         user2 = get_user_model().objects.create_user(
             'other@gmail.com',
             'testpass'
